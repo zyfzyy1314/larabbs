@@ -19,7 +19,7 @@
         <!-- Authentication Links -->
         @guest
           <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ ('register') }}">注册</a></li>
         @else
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +27,7 @@
               {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="">个人中心</a>
+              <a class="dropdown-item" href="{{route('users.show',Auth::user()->id)}}">个人中心</a>
               <a class="dropdown-item" href="">编辑资料</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" id="logout" href="#">
