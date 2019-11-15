@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UserRequest;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -56,9 +57,10 @@ class UsersController extends Controller
      * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function edit(Users $users)
+    public function edit(User $user)
     {
         //
+        return view('users.edit',compact('user'));
     }
 
     /**
@@ -68,9 +70,15 @@ class UsersController extends Controller
      * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $users)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $user->update([
+            'introduction' => $request->introduction,
+        ]);
+
+        session()->flash('success','编辑成功');
+        
+       return redirect()->route('users.show',$user->id);
     }
 
     /**
