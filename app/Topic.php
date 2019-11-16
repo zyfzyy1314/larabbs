@@ -10,13 +10,13 @@ class Topic extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id');
+        return $this->belongsTo('App\Category');
     }
 
 
     public function user()
     {
-        return $this->belongsTo('App\User','user_id');
+        return $this->belongsTo('App\User');
     }
 
     public function scopeWithOrder($query, $order)
