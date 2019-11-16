@@ -18,6 +18,7 @@ class TopicsController extends Controller
 	{
 		//预加载
 
+		dd($topic->user());
 		$topics = $topic->withOrder($request->order)->paginate(20);
 	//	$topics = Topic::with('user', 'category')->paginate(30);
 

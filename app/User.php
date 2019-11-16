@@ -46,4 +46,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function getAvatarAttribute($value){
         return $value ?? '/uploads/images/avatars/default_head.png';
     }
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
 }
