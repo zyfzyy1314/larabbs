@@ -31,6 +31,11 @@
         <a class="nav-link mt-1 mr-3 font-weight-bold" href="{{ route('topics.create') }}">
             <i class="fa fa-plus"></i>
           </a>
+          <li class="nav-item notification-badge">
+              <a class="nav-link mr-3 badge badge-pill badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'secondary' }} text-white" href="{{ route('notifications.index') }}">
+                {{ Auth::user()->notification_count }}
+              </a>
+            </li>        
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,6 +45,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{route('users.show',Auth::user()->id)}}"> <i class="far fa-user mr-2"></i>个人中心</a>
               <a class="dropdown-item" href="{{route('users.edit',Auth::user()->id)}}"><i class="far fa-edit mr-2"></i>编辑资料</a>
+              
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" id="logout" href="#">
                 <form action="{{ route('logout') }}" method="POST">
