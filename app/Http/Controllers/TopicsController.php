@@ -32,6 +32,7 @@ class TopicsController extends Controller
         return view('topics.show', compact('topic'));
     }
 
+
 	public function create(Topic $topic)
 	{
 		$categories = Category::all();
@@ -56,8 +57,9 @@ class TopicsController extends Controller
 		]);
 
  */
-
-		return redirect()->route('topics.show', $topic->id)->with('success', '帖子创建成功！');
+		return redirect()->to($topic->link())->with('success', '成功创建话题！');
+	
+	//	return redirect()->route('topics.show', $topic->id)->with('success', '帖子创建成功！');
 	}
 
 	public function edit(Topic $topic)
@@ -72,8 +74,9 @@ class TopicsController extends Controller
 	{
 		$this->authorize('update', $topic);
 		$topic->update($request->all());
+		return redirect()->to($topic->link())->with('success', '成功创建话题！');
 
-		return redirect()->route('topics.show', $topic->id)->with('message', 'Updated successfully.');
+		//return redirect()->route('topics.show', $topic->id)->with('message', 'Updated successfully.');
 	}
 
 	public function destroy(Topic $topic)
