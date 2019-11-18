@@ -6,13 +6,18 @@ class TopicRequest extends Request
 {
     public function rules()
     {
+
+ 
+
         switch($this->method())
         {
             // CREATE
             case 'POST':
             {
                 return [
-                    // CREATE ROLES
+                    'title'       => 'required|min:10',
+                    'body'        => 'required|min:30',
+                    'category_id' => 'required|numeric',
                 ];
             }
             // UPDATE
@@ -38,7 +43,7 @@ class TopicRequest extends Request
     {
         return [
             'title.min' => '标题必须至少两个字符',
-            'body.min' => '文章内容必须至少三个字符',
+            'body.min' => '文章内容必须至少30个字符',
         ];
     }
 }

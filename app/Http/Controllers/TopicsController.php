@@ -9,6 +9,7 @@ use App\Http\Requests\TopicRequest;
 use App\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+use App\Observers\TopicObserver;
 
 class TopicsController extends Controller
 {
@@ -40,6 +41,8 @@ class TopicsController extends Controller
 
 	public function store(TopicRequest $request, Topic $topic)
 	{
+
+	
 	
         $topic->fill($request->all());
         $topic->user_id = Auth::id();

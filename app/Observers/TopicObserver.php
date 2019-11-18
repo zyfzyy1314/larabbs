@@ -9,16 +9,6 @@ use App\Topic;
 
 class TopicObserver
 {
-    public function creating(Topic $topic)
-    {
-        //
-    }
-
-    public function updating(Topic $topic)
-    {
-        //
-    }
-
     public function saving(Topic $topic)
     {
         $topic->body = clean($topic->body, 'user_topic_body');
