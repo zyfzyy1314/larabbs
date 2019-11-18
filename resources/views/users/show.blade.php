@@ -29,8 +29,8 @@
       <div class="card ">
         <div class="card-body">
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active bg-transparent" href="#">Ta 的话题</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Ta 的回复</a></li>
+                <li class="nav-item"><a class="nav-link active bg-transparent" href="{{ route('users.show', $user->id) }}">Ta 的话题</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">Ta 的回复</a></li>
               </ul>
               @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
         </div>
