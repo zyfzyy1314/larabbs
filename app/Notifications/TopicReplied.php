@@ -8,10 +8,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Reply;
 
-
+//class TopicReplied extends Notification
 class TopicReplied extends Notification implements ShouldQueue
 {
     use Queueable;
+    public $reply;
 
     /**
      * Create a new notification instance.
